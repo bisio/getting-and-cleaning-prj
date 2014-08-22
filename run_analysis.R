@@ -44,6 +44,8 @@ library(plyr)
 cols.to.process <- colnames(tidy.all)[3:ncol(tidy.all)]
 the.new.df <- ddply(tidy.all,.(subject,activity),colwise(mean,cols.to.process))
 
+write.table(the.new.df, "tidy_data.txt",row.names=F)
+
 # alternative implementation without plyr
 #
 # splitted <- split(tidy.all,list(tidy.all$subject,tidy.all$activity),drop=T)
